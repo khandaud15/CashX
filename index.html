@@ -155,7 +155,7 @@
       .mobile-image { display: block !important; }
     }
 
-    .steps-section { padding: 60px 20px; background: #f9fafb; text-align: center; }
+        .steps-section { padding: 60px 20px; background: #f9fafb; text-align: center; }
     .steps-section h2 { font-size: 36px; margin-bottom: 40px; }
     .steps-grid {
       display: flex;
@@ -163,20 +163,42 @@
       gap: 30px;
       max-width: 1200px;
       margin: auto;
-      flex-wrap: wrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 10px 0;
     }
     .step-card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 30px;
-      width: 300px;
+      background: transparent;
+      flex: 0 0 auto;
+      width: 340px;
       transition: transform 0.3s ease;
       text-decoration: none;
       color: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      scroll-snap-align: center;
     }
     .step-card:hover { transform: translateY(-8px); }
-    .step-card img { width: 50px; margin-bottom: 20px; }
+    .step-card img { 
+      width: 100%; 
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    
+    /* Make sure horizontal scrolling works well on mobile */
+    @media (max-width: 768px) {
+      .steps-grid {
+        justify-content: flex-start;
+        padding: 10px 0;
+      }
+      .step-card {
+        width: 300px;
+      }
+    }
     .step-card h3 { font-size: 20px; margin-bottom: 10px; }
     .step-card p { font-size: 16px; color: #6b7280; }
 
@@ -343,21 +365,15 @@
 <section class="steps-section" id="how">
   <h2>How CashX Works</h2>
   <div class="steps-grid">
-    <a href="https://amzn.to/4lS2Ghl" target="_blank" class="step-card">
-      <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Browse Products" />
-      <h3>Browse Products</h3>
-      <p>Explore wide selection with exclusive cashback offers.</p>
+    <a href="https://amzn.to/44bs5MD" target="_blank" class="step-card">
+      <img src="https://raw.githubusercontent.com/khandaud15/personal/main/browse_product.png" alt="Browse Products" />
     </a>
-    <div class="step-card">
-      <img src="https://img.icons8.com/ios-filled/50/000000/shopping-cart.png" alt="Shop Links" />
-      <h3>Shop Through Links</h3>
-      <p>Click affiliate links and shop on Amazon. Automatically tracked.</p>
-    </div>
-    <div class="step-card">
-      <img src="https://img.icons8.com/ios-filled/50/000000/money.png" alt="Earn Cashback" />
-      <h3>Earn & Redeem</h3>
-      <p>Earn cashback on verified purchases and redeem.</p>
-    </div>
+    <a href="https://amzn.to/4lS2Ghl" target="_blank" class="step-card">
+      <img src="https://raw.githubusercontent.com/khandaud15/personal/main/shop_through_links.png" alt="Shop Links" />
+    </a>
+    <a href="https://amzn.to/4lS2Ghl" target="_blank" class="step-card">
+      <img src="https://raw.githubusercontent.com/khandaud15/personal/main/earn_redeem.png" alt="Earn Cashback" />
+    </a>
   </div>
 </section>
 
