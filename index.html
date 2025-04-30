@@ -28,7 +28,11 @@
       flex-wrap: wrap;
     }
     .header-left { display: flex; align-items: center; gap: 24px; flex: 1; }
-    .logo img { height: 40px; }
+    .logo { display: flex; align-items: center; }
+    .logo img { 
+      height: 32px; /* Reduced from 40px to better match button height */
+      width: auto;
+    }
     .nav-menu { display: flex; gap: 16px; flex-wrap: wrap; }
     .nav-menu a {
       text-decoration: none;
@@ -52,6 +56,10 @@
       font-weight: 600;
       border: none;
       cursor: pointer;
+      height: 36px; /* Fixed height to match logo */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Media Query for Mobile Devices - Header */
