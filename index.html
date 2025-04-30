@@ -54,6 +54,14 @@
       cursor: pointer;
     }
 
+    /* Media Query for Mobile Devices - Header */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .search-bar { display: none; }
+      .header-left { flex: none; }
+      .header-right { margin-left: 0; }
+    }
+
     .hero {
       display: flex;
       justify-content: space-between;
@@ -77,8 +85,67 @@
     .signup-main { background: #111827; color: #fafafa; }
     .how-it-works { border: 2px solid #111827; color: #111827; }
 
-    .hero-image { flex: 1 1 40%; max-width: 40%; text-align: right; }
-    .hero-image img { width: 100%; border-radius: 12px; max-width: 400px; margin-top: 60px; }
+    .hero-image { 
+      flex: 1 1 40%; 
+      max-width: 40%; 
+      text-align: right; 
+      display: block;
+      position: relative;
+    }
+    .hero-image img { 
+      width: 100%; 
+      border-radius: 12px; 
+      max-width: 400px; 
+      margin-top: 60px; 
+      display: block;
+    }
+    /* Wrap image in a container to better control alt text visibility */
+    .hero-image .image-wrapper {
+      display: inline-block;
+      position: relative;
+    }
+    /* Ensure alt text is not visible, even if image fails to load */
+    .hero-image img[alt] {
+      text-indent: -9999px !important;
+      overflow: hidden !important;
+      font-size: 0 !important; /* Additional measure to suppress alt text */
+      line-height: 0 !important;
+    }
+    /* Hide broken image placeholder */
+    .hero-image img:not([src]),
+    .hero-image img[src=""] {
+      display: block !important;
+      visibility: hidden !important;
+    }
+    .desktop-image { display: block; }
+    .mobile-image { display: none; }
+
+    /* Media Query for Mobile Devices - Hero Section */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-text {
+        display: none;
+      }
+      .hero-image {
+        max-width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        display: block;
+      }
+      .hero-image img {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 20px;
+        margin-top: 0;
+        display: block;
+      }
+      .desktop-image { display: none; }
+      .mobile-image { display: block !important; }
+    }
 
     .steps-section { padding: 60px 20px; background: #f9fafb; text-align: center; }
     .steps-section h2 { font-size: 36px; margin-bottom: 40px; }
@@ -97,6 +164,8 @@
       padding: 30px;
       width: 300px;
       transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
     .step-card:hover { transform: translateY(-8px); }
     .step-card img { width: 50px; margin-bottom: 20px; }
@@ -234,8 +303,10 @@
       <a href="#help">Help</a>
     </nav>
   </div>
-  <div class="header-right">
-    <div class="search-bar"><input type="text" placeholder="Search brands, products and stores" /></div>
+  <div class="header-right" style="margin-left: -12px;">
+    <div class="search-bar">
+      <input type="text" placeholder="Search brands, products and stores" />
+    </div>
     <button class="login-btn">Login</button>
     <button class="signup-btn" onclick="openModal()">Sign Up</button>
   </div>
@@ -251,18 +322,24 @@
     </div>
   </div>
   <div class="hero-image">
-    <img src="https://raw.githubusercontent.com/khandaud15/personal/main/Main.png" alt="CashX Hero" />
+    <div class="image-wrapper">
+      <img src="https://raw.githubusercontent.com/khandaud15/personal/main/Main.png" alt="CashX Hero Desktop" class="desktop-image" />
+    </div>
+    <!-- Mobile image container is empty but preserved for structure -->
+    <div class="image-wrapper" style="display: none;">
+      <!-- Intentionally left empty to prevent duplicate images -->
+    </div>
   </div>
 </section>
 
 <section class="steps-section" id="how">
   <h2>How CashX Works</h2>
   <div class="steps-grid">
-    <div class="step-card">
+    <a href="https://amzn.to/4lS2Ghl" target="_blank" class="step-card">
       <img src="https://img.icons8.com/ios-filled/50/000000/search--v1.png" alt="Browse Products" />
       <h3>Browse Products</h3>
       <p>Explore wide selection with exclusive cashback offers.</p>
-    </div>
+    </a>
     <div class="step-card">
       <img src="https://img.icons8.com/ios-filled/50/000000/shopping-cart.png" alt="Shop Links" />
       <h3>Shop Through Links</h3>
@@ -326,7 +403,7 @@
 
 <footer>
   <p>About Us · Help · Invite a Friend · Payment & Benefits · Download App</p>
-  <p>&copy; 2025 CashX. All rights reserved.</p>
+  <p>© 2025 CashX. All rights reserved.</p>
 </footer>
 
 <script>
